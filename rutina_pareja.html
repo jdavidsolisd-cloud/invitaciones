@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Entrenamiento en pareja · Lunes a Sábado</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f1ea;--tx:#1b1b1f;--mut:#5d5d66;--card:rgba(255,255,255,.72);--line:rgba(0,0,0,.1);--a:#ff5a36;--b:#ffb400;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d0d12;--tx:#f4f2ee;--mut:#a9a9b5;--card:rgba(255,255,255,.07);--line:rgba(255,255,255,.12)}}
+:root[data-theme="dark"]{--bg:#0d0d12;--tx:#f4f2ee;--mut:#a9a9b5;--card:rgba(255,255,255,.07);--line:rgba(255,255,255,.12)}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;min-height:100vh;color:var(--tx);background:var(--bg);font-family:'Outfit',system-ui,sans-serif;transition:background .5s;
+background-image:radial-gradient(900px 500px at 85% -10%,color-mix(in srgb,var(--a) 38%,transparent),transparent 70%),radial-gradient(700px 500px at -10% 30%,color-mix(in srgb,var(--b) 24%,transparent),transparent 70%);background-attachment:fixed}
+.wrap{max-width:860px;margin:0 auto;padding:22px 16px 60px}
+h1,h2,h3{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;margin:0;letter-spacing:.03em}
+.hero h1{font-size:clamp(46px,11vw,92px);line-height:.92;background:linear-gradient(100deg,var(--a),var(--b));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--mut);margin:10px 0 0;max-width:560px;line-height:1.5}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 4px}
+.pill{border:1px solid var(--line);background:var(--card);border-radius:99px;padding:6px 13px;font-size:13px;backdrop-filter:blur(8px)}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding:16px 0 10px;scrollbar-width:none}
+.tab{flex:1 0 auto;min-width:78px;border:1px solid var(--line);background:var(--card);color:var(--tx);border-radius:16px;padding:10px 8px;cursor:pointer;font:inherit;text-align:center;transition:.25s}
+.tab b{display:block;font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-size:19px;letter-spacing:.05em}
+.tab span{font-size:20px}
+.tab[aria-selected=true]{background:linear-gradient(135deg,var(--a),var(--b));color:#111;border-color:transparent;transform:translateY(-3px);box-shadow:0 10px 26px -8px var(--a)}
+.dayhead{margin:14px 0 6px;display:flex;justify-content:space-between;align-items:flex-end;gap:10px;flex-wrap:wrap}
+.dayhead h2{font-size:clamp(34px,8vw,56px);line-height:1}
+.dayhead small{color:var(--mut);font-size:14px}
+.badge{background:linear-gradient(135deg,var(--a),var(--b));color:#111;font-weight:700;border-radius:99px;padding:6px 14px;font-size:13px}
+.bar{height:8px;border-radius:9px;background:var(--line);overflow:hidden;margin:10px 0 4px}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--a),var(--b));transition:width .4s}
+.sec{margin-top:26px}
+.sec>h3{font-size:26px;display:flex;align-items:center;gap:10px}
+.sec>h3::after{content:"";flex:1;height:2px;background:linear-gradient(90deg,var(--a),transparent)}
+.sec>h3 em{font-style:normal;font-family:'Outfit',sans-serif;font-size:13px;color:var(--mut);letter-spacing:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;backdrop-filter:blur(10px)}
+.w{display:flex;justify-content:space-between;gap:10px;padding:9px 4px;border-bottom:1px dashed var(--line)}
+.w:last-of-type{border:0}.w time{font-weight:700;color:var(--a);white-space:nowrap}
+.w.hot{background:linear-gradient(90deg,color-mix(in srgb,var(--a) 22%,transparent),transparent);border-radius:10px;padding-left:10px;font-weight:700}
+.note{color:var(--mut);font-size:13.5px;line-height:1.5;margin:10px 4px 0}
+.ex{display:grid;grid-template-columns:54px 1fr;gap:12px;margin-top:12px;transition:.3s}
+.ex.done{opacity:.55}.ex.done h4{text-decoration:line-through}
+.ico{width:54px;height:54px;border-radius:15px;display:grid;place-items:center;font-size:28px;background:linear-gradient(135deg,var(--a),var(--b))}
+.ex h4{margin:0;font-size:18px}
+.meta{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
+.meta span{font-size:12.5px;font-weight:700;border-radius:8px;padding:3px 9px;border:1px solid var(--line)}
+.meta .s{background:var(--a);color:#111;border-color:transparent}
+.ex p{margin:0 0 10px;color:var(--mut);font-size:14px;line-height:1.5}
+.acts{display:flex;gap:8px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:6px;text-decoration:none;font:inherit;font-size:13.5px;font-weight:700;border-radius:99px;padding:8px 15px;cursor:pointer;border:1px solid var(--line);background:transparent;color:var(--tx)}
+.btn.v{background:linear-gradient(135deg,var(--a),var(--b));color:#111;border-color:transparent}
+.chips{display:flex;flex-wrap:wrap;gap:8px}.chips span{border:1px solid var(--line);border-radius:99px;padding:6px 13px;font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.grid .card b{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-size:22px;color:var(--a);letter-spacing:.04em}
+.grid .card p{margin:4px 0 0;font-size:14px;line-height:1.5;color:var(--mut)}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style></head><body><div class="wrap">
+<header class="hero"><h1>ENTRENAMIENTO<br>EN PAREJA</h1>
+<p>Misma rutina para los dos, cada uno con su peso y su variante. Técnica controlada y terminar cada serie con ~2 repeticiones en reserva.</p>
+<div class="pills"><span class="pill">📅 Lunes a sábado</span><span class="pill">⏱ 45–60 min</span><span class="pill">🔁 3–4 series × 10–12</span><span class="pill">🏠 Mancuernas · kettlebell · bandas · step</span></div></header>
+<nav class="tabs" id="tabs" role="tablist"></nav>
+<main id="day"></main>
+<section class="sec"><h3>CÓMO USAR LA RUTINA</h3><div class="grid" id="guide"></div></section>
+</div>
+<script>
+var D=[
+{n:'Lunes',i:'🦵',a:'#ff5a36',b:'#ffb400',t:'Pierna + glúteos',s:'Énfasis en cuádriceps',m:'50–58 min',
+w:[['Marcha rápida en el sitio','1:30'],['Step básico','2:00'],['Paso lateral + brazos','1:00'],['Sentadillas sin peso','1:00'],['Rodillas arriba, bajo impacto','1:00'],['Burpees con salto','0:30'],['Movilidad de tobillos y cadera','1:00']],
+act:'10 bisagras de cadera sin peso, 8 sentadillas lentas y 6 zancadas cortas alternas.',
+e:[['Sentadilla Goblet','4 × 10–12','75–90 s','Mancuerna o kettlebell frente al pecho, pies algo más abiertos que las caderas. Bajen con control y empujen el suelo.','sentadilla goblet tecnica','🏋️'],
+['Zancada hacia atrás','3 × 10 por pierna','75 s','Paso atrás, bajen en vertical y regresen empujando con el pie delantero. Pueden apoyarse si pierden equilibrio.','zancada hacia atras tecnica','🚶'],
+['Step-up','3 × 10 por pierna','60–75 s','Suban con todo el pie apoyado, impúlsense con la pierna de arriba y bajen despacio. Si el step es inestable: sentadilla dividida corta.','step up con mancuernas','🪜'],
+['Puente de glúteos con peso','3 × 12','60 s','Boca arriba, eleven la cadera apretando glúteos sin arquear la zona lumbar.','puente de gluteos con mancuerna','🍑'],
+['Elevación de pantorrillas','3 × 12–15','45–60 s','Suban los talones, pausa breve arriba y bajen lento. Pueden apoyarse en la pared.','elevacion de pantorrillas de pie','🦶']],
+st:['Cuádriceps de pie','Glúteo sentado','Parte posterior del muslo','Pantorrilla contra pared','Flexor de cadera'],
+k:'Hoy es el día fuerte de cuádriceps. En zancadas y step-ups hagan todas las repeticiones de un lado y luego del otro.'},
+{n:'Martes',i:'💪',a:'#2d7dff',b:'#00e0c6',t:'Pecho + tríceps',s:'Flexiones primero, grupo grande antes que el pequeño',m:'48–56 min',
+w:[['Marcha rápida','1:30'],['Step suave','1:30'],['Círculos de brazos','1:00'],['Boxeo al aire suave','1:00'],['Jumping jack sin salto','1:00'],['Burpees con salto','0:30'],['Flexiones contra pared','1:00']],
+act:'10 retracciones de omóplatos, 8 flexiones contra pared y 6 flexiones lentas a tu variante.',
+e:[['Flexión estándar (push-up)','4 × 10–12','75–90 s','Manos un poco más abiertas que los hombros, cuerpo en línea recta y abdomen firme. Ella: con rodillas apoyadas (línea hombros–cadera–rodillas).','como hacer flexiones push up tecnica','🤸'],
+['Flexión con pies elevados','3 × 10–12','75 s','Pies sobre el step firme para cargar más el pecho alto. Ella: flexión estándar con rodillas, o manos sobre el step si prefiere subir la dificultad poco a poco.','flexiones declinadas pies elevados','⛰️'],
+['Flexión con agarre ancho','3 × 10–12','60–75 s','Manos más separadas que en la estándar, codos a ~45° del torso. Bajen hasta casi tocar el suelo con el pecho.','flexiones agarre ancho tecnica','↔️'],
+['Extensión de tríceps sobre cabeza','3 × 10–12','60 s','Una mancuerna con ambas manos, codos al frente. Flexionen y extiendan sin arquear la espalda.','extension de triceps sobre la cabeza mancuerna','🔱'],
+['Patada de tríceps','3 × 10–12','45–60 s','Torso inclinado con espalda neutra, codo pegado al cuerpo; extiendan el antebrazo.','patada de triceps con mancuerna','🦵']],
+st:['Pecho en marco de puerta','Tríceps sobre la cabeza','Hombro cruzando el brazo','Antebrazos y muñecas'],
+k:'No hace falta llegar al fallo. Si la postura se deforma, pasen a la variante más fácil (rodillas o manos en el step).'},
+{n:'Miércoles',i:'🧗',a:'#a855ff',b:'#ff4fa3',t:'Espalda + bíceps',s:'Tracciones, primero el grupo grande',m:'50–58 min',
+w:[['Marcha rápida','1:30'],['Step básico','2:00'],['Círculos de hombros','1:00'],['Boxeo al aire','1:00'],['Bisagra de cadera sin peso','1:00'],['Burpees con salto','0:30'],['Remo sin peso','0:30']],
+act:'10 aperturas de banda suaves, 8 bisagras de cadera y 8 remos sin peso por lado.',
+e:[['Remo inclinado con mancuernas','4 × 10–12','75–90 s','Torso inclinado desde la cadera, espalda neutra. Codos hacia atrás junto al torso, sin encoger hombros.','remo inclinado con mancuernas tecnica','🚣'],
+['Remo unilateral','3 × 10–12 por lado','60–75 s','Una mano en superficie firme; tiren de la mancuerna hacia la cadera sin girar el tronco.','remo unilateral con mancuerna','🏹'],
+['Remo con banda','3 × 12','60 s','Banda anclada de forma segura al frente. Tiren de los codos atrás y regresen lento.','remo con banda elastica','🎗️'],
+['Pájaros (vuelo posterior)','3 × 10–12','60 s','Poco peso, torso inclinado. Abran los brazos hasta la línea del cuerpo sin impulsarse.','pajaros vuelo posterior mancuernas','🕊️'],
+['Curl de bíceps','3 × 10–12','60 s','Codos junto al torso, sin balancear el cuerpo; bajen lentamente.','curl de biceps con mancuernas','💪'],
+['Curl martillo','3 × 10–12','45–60 s','Palmas enfrentadas todo el recorrido, muñecas neutras.','curl martillo mancuernas','🔨']],
+st:['Espalda alta abrazándose','Dorsales con brazo elevado','Bíceps contra la pared','Postura de niño'],
+k:'En los remos piensen en llevar los codos atrás, no en subir los hombros. Si se cansa antes la zona lumbar, bajen peso o apóyense.'},
+{n:'Jueves',i:'🛡️',a:'#10d98a',b:'#c6ff3d',t:'Hombros + abdomen',s:'Estabilidad y control',m:'45–53 min',
+w:[['Marcha rápida','1:30'],['Step suave','1:30'],['Círculos de brazos','1:00'],['Boxeo al aire','1:00'],['Marcha con rodillas','1:00'],['Burpees con salto','0:30'],['Movilidad de columna','1:00']],
+act:'8 press de hombros sin peso, 10 aperturas suaves de brazos y 6 respiraciones profundas con abdomen firme.',
+e:[['Press militar con mancuernas','4 × 10–12','75–90 s','De pie o sentados, mancuernas a la altura de los hombros. Empujen arriba sin arquear la espalda.','press militar con mancuernas','🏆'],
+['Elevación lateral','3 × 10–12','60 s','Poco peso, codos levemente flexionados. Suban hasta la altura de los hombros, sin balancearse.','elevaciones laterales mancuernas','🦅'],
+['Face pull con banda','3 × 12','60 s','Banda anclada a la altura del rostro; tiren hacia la cara abriendo codos. Cuello relajado.','face pull con banda elastica','🎯'],
+['Dead bug','3 × 10 por lado','45–60 s','Boca arriba, extiendan brazo y pierna contrarios sin despegar la zona lumbar del suelo.','dead bug ejercicio','🪲'],
+['Plancha','3 × 20–40 s','45–60 s','Codos bajo hombros, abdomen y glúteos firmes. Variante: rodillas apoyadas.','plancha abdominal tecnica','📏'],
+['Plancha lateral','2 × 20–30 s por lado','45 s','Apoyo en antebrazo, hombro–cadera–rodillas alineados. Pueden flexionar las rodillas.','plancha lateral tecnica','⚖️']],
+st:['Hombro cruzando el brazo','Tríceps suave','Postura de niño','Respiración diafragmática'],
+k:'Sin elevaciones frontales: el deltoide frontal ya trabaja en el press militar y en las flexiones. No fuercen la plancha si sienten dolor lumbar.'},
+{n:'Viernes',i:'🍑',a:'#ff3d81',b:'#ff9a3d',t:'Pierna + glúteos',s:'Énfasis en cadena posterior',m:'50–58 min',
+w:[['Marcha rápida','1:30'],['Step básico','1:30'],['Bisagra de cadera','1:00'],['Sentadilla sin peso','1:00'],['Puente de glúteos','1:00'],['Burpees con salto','0:30'],['Movilidad de cadera','1:00']],
+act:'10 bisagras sin peso, 10 puentes de glúteos y 8 curl femorales sin resistencia o con banda muy ligera.',
+e:[['Peso muerto rumano con mancuernas','4 × 10–12','75–90 s','Rodillas ligeramente flexionadas, mancuernas cerca de las piernas y cadera atrás. Suban apretando glúteos sin redondear la espalda.','peso muerto rumano con mancuernas','🏗️'],
+['Hip thrust / puente elevado','4 × 10–12','75 s','Espalda alta en un soporte firme (o puente en el suelo). Eleven hasta alinear tronco y muslos.','hip thrust con mancuerna en casa','🌉'],
+['Curl femoral con banda','3 × 12','60 s','Banda bien asegurada. Lleven el talón al glúteo y regresen lento.','curl femoral con banda elastica','🎀'],
+['Caminata lateral con banda','3 × 10–12 pasos por lado','45–60 s','Banda sobre rodillas o tobillos, semiflexión y pasos cortos sin juntar los pies.','caminata lateral con banda','🦀'],
+['Elevación de pantorrillas','3 × 12–15','45–60 s','Suban y bajen lento; pueden sostener una mancuerna.','elevacion de pantorrillas con mancuerna','🦶']],
+st:['Isquiotibiales sentado','Glúteos','Flexor de cadera','Pantorrilla contra la pared'],
+k:'El peso muerto rumano es un movimiento de cadera, no una sentadilla. Si sienten más la espalda baja que glúteos, bajen peso y recorrido.'},
+{n:'Sábado',i:'🔥',a:'#ff2e2e',b:'#ffd23d',t:'Full body + cardio',s:'Circuito de resistencia · 3 rondas',m:'45–55 min',
+w:[['Marcha en el sitio','2:00'],['Step básico','2:00'],['Paso lateral con brazos','2:00'],['Sentadillas sin peso','1:00'],['Burpees con salto','1:00']],
+act:'6 sentadillas sin peso, 6 bisagras y 6 flexiones contra pared. Luego preparen el equipo del circuito.',
+e:[['Sentadilla Goblet','3 × 10–12','30 s al siguiente','Cargas más ligeras que en los días de fuerza; ritmo constante y técnica primero.','sentadilla goblet tecnica','🏋️'],
+['Flexiones (push-up)','3 × 10–12','30 s al siguiente','Estándar para ti, con rodillas para ella. Cuerpo alineado.','como hacer flexiones push up tecnica','🤸'],
+['Remo con mancuernas','3 × 10–12','30 s al siguiente','Torso inclinado, espalda neutra, codos atrás.','remo inclinado con mancuernas tecnica','🚣'],
+['Peso muerto rumano','3 × 10–12','30 s al siguiente','Cadera atrás, mancuernas cerca de las piernas, columna estable.','peso muerto rumano con mancuernas','🏗️'],
+['Press militar','3 × 10','30 s al siguiente','Empujen arriba sin arquear la zona lumbar.','press militar con mancuernas','🏆'],
+['Dead bug','3 × 8–10 por lado','90 s al terminar la ronda','Extiendan brazo y pierna contrarios con control abdominal.','dead bug ejercicio','🪲']],
+fin:'Cardio final: 6 min de step por intervalos — 45 s a ritmo moderado + 15 s muy suave, ×6.',
+st:['Pecho','Espalda','Cuádriceps','Parte posterior del muslo','Hombros','Glúteos'],
+k:'Hagan los 6 ejercicios seguidos (~30 s entre ellos) y 90 s al terminar cada ronda. Si llegan fatigados: 20–30 min de caminata o step suave y movilidad.'}];
+var G=[['Descansos','Ejercicios grandes 75–90 s · aislados 45–60 s · entre ejercicios 45–60 s (hasta 90 s si lo necesitan).'],
+['Cómo elegir el peso','Uno con el que logren 10–12 repeticiones controladas; las últimas 2 deben ser retadoras pero sin deformar la postura.'],
+['Progresión','Semanas 1–2: 3 series. Después, 4 series en los ejercicios principales. Con 12 reps en todas las series durante 2 sesiones, suban un poco el peso o la banda.'],
+['Burpees con salto','Van al final del calentamiento (30 s, ritmo cómodo). Si alguno prefiere menos impacto: paso atrás sin salto. Respiren, no contengan el aire.'],
+['Ajustes','Muy cansados: una serie menos por ejercicio. Sesión de más de 60 min: 3 series en vez de 4. El domingo es descanso (caminata tranquila opcional).'],
+['Esfuerzo','4–5/10 muy cómodo · 6–7/10 moderado-retador (zona ideal) · 8–9/10 muy exigente, no hace falta buscarlo siempre.']];
+var cur=0,done={};try{done=JSON.parse(localStorage.getItem('done')||'{}')}catch(e){}
+function yt(q){return 'https://www.youtube.com/results?search_query='+encodeURIComponent(q+' ejercicio como hacerlo')}
+function save(){try{localStorage.setItem('done',JSON.stringify(done))}catch(e){}}
+function tot(w){var s=0;w.forEach(function(x){var p=x[1].split(':');s+=+p[0]*60+ +p[1]});return Math.round(s/60)}
+function bar(){var d=D[cur],c=0;d.e.forEach(function(_,j){if(done[cur+'-'+j])c++});
+document.getElementById('bf').style.width=(c/d.e.length*100)+'%';document.getElementById('bt').textContent=c+' de '+d.e.length+' ejercicios completados'}
+function toggle(j,el){var k=cur+'-'+j;done[k]=!done[k];save();el.closest('.ex').classList.toggle('done',done[k]);el.textContent=done[k]?'✓ Hecho':'Marcar hecho';bar()}
+function show(i){cur=i;var d=D[i],r=document.documentElement.style;r.setProperty('--a',d.a);r.setProperty('--b',d.b);
+[].forEach.call(document.querySelectorAll('.tab'),function(t,k){t.setAttribute('aria-selected',k==i)});
+var h='<div class="dayhead"><div><h2>'+d.n.toUpperCase()+' · '+d.t+'</h2><small>'+d.s+'</small></div><span class="badge">'+d.i+' '+d.m+'</span></div><div class="bar"><i id="bf"></i></div><small id="bt" style="color:var(--mut)"></small>';
+h+='<section class="sec"><h3>1 · CALENTAMIENTO <em>'+tot(d.w)+' min + 2 min de activación</em></h3><div class="card">';
+d.w.forEach(function(x){var hot=/Burpee/.test(x[0]);h+='<div class="w'+(hot?' hot':'')+'"><span>'+(hot?'🔥 ':'')+x[0]+'</span><time>'+x[1]+'</time></div>'});
+h+='<p class="note"><b>Activación:</b> '+d.act+' Entre movimientos solo 10–15 s para cambiar de posición.</p></div></section>';
+h+='<section class="sec"><h3>2 · FUERZA <em>completen todas las series antes de pasar al siguiente</em></h3>';
+d.e.forEach(function(x,j){var on=done[i+'-'+j];h+='<article class="card ex'+(on?' done':'')+'"><div class="ico">'+x[5]+'</div><div><h4>'+(j+1)+'. '+x[0]+'</h4><div class="meta"><span class="s">'+x[1]+'</span><span>⏸ '+x[2]+'</span></div><p>'+x[3]+'</p><div class="acts"><a class="btn v" href="'+yt(x[4])+'" target="_blank" rel="noopener">▶ Ver cómo se hace</a><button class="btn" onclick="toggle('+j+',this)">'+(on?'✓ Hecho':'Marcar hecho')+'</button></div></div></article>'});
+if(d.fin)h+='<p class="note">⚡ '+d.fin+'</p>';
+h+='<p class="note">💡 '+d.k+'</p></section>';
+h+='<section class="sec"><h3>3 · ESTIRAMIENTO <em>5 min · 20–30 s por lado, sin rebotes</em></h3><div class="chips">'+d.st.map(function(s){return '<span>'+s+'</span>'}).join('')+'</div></section>';
+document.getElementById('day').innerHTML=h;bar()}
+document.getElementById('tabs').innerHTML=D.map(function(d,i){return '<button class="tab" role="tab" onclick="show('+i+')"><span>'+d.i+'</span><b>'+d.n.slice(0,3).toUpperCase()+'</b></button>'}).join('');
+document.getElementById('guide').innerHTML=G.map(function(g){return '<div class="card"><b>'+g[0]+'</b><p>'+g[1]+'</p></div>'}).join('');
+var dw=new Date().getDay();show(dw>=1&&dw<=6?dw-1:0);
+</script></body></html>
